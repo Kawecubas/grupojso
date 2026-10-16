@@ -377,3 +377,10 @@ button { font: inherit; cursor: pointer; }
   .region:first-child ul { columns: 3; }
 }
 .titulo-seccion { font-size: clamp(40px, 7vw, 96px); }
+
+/* Logo en el footer */
+.footer-marca { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; margin: 0 0 56px; }
+.footer-logo { position: relative; width: clamp(110px, 14vw, 160px); aspect-ratio: 1; flex: none; border-radius: 50%; background: #fff; padding: 6px; }
+.footer-marca-texto { display: grid; gap: 10px; min-width: 0; }
+.footer-marca-texto .nombre { font-family: var(--display); font-stretch: 75%; font-weight: 800; text-transform: uppercase; font-size: clamp(40px, 6vw, 72px); line-height: 0.9; color: #fff; letter-spacing: 0.02em; }
+.footer-marca-texto .lema { font-family: var(--display); font-size: 13px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cobre); }

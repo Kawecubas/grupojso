@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { empresa, navegacion, proyectos } from "@/lib/data";
 
@@ -5,7 +6,15 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="contenedor">
-        <p className="footer-grande" aria-hidden>Grupo <span>JSO</span></p>
+        <div className="footer-marca">
+          <div className="footer-logo">
+            <Image src={empresa.logo} alt="Logo Grupo JSO" fill sizes="160px" style={{ objectFit: "contain" }} />
+          </div>
+          <div className="footer-marca-texto">
+            <span className="nombre">Grupo JSO</span>
+            <span className="lema">{empresa.lema}</span>
+          </div>
+        </div>
         <div className="footer-cols">
           <div>
             <h4>Sede</h4>
