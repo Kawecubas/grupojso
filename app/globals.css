@@ -221,8 +221,44 @@ button { font: inherit; cursor: pointer; }
 .dato .valor { font-family: var(--display); font-stretch: 75%; font-weight: 800; font-size: 64px; line-height: 1; color: var(--tinta); }
 .dato .valor span { color: var(--cobre); }
 .dato .desc { margin-top: 8px; font-size: 14px; color: var(--gris); }
-.banner-numeros { position: relative; margin-top: 56px; aspect-ratio: 934 / 349; background: #fff; border: 1px solid rgba(0,0,0,0.08); }
+.banner-numeros { position: relative; margin-top: 56px; aspect-ratio: 934 / 349; background: var(--negro); border: 1px solid var(--negro); }
 .banner-numeros img { object-fit: contain; padding: 16px; }
+
+/* Números JSO — foto de obra + mapa + países */
+.numeros { position: relative; overflow: hidden; background: var(--negro); color: #fff; isolation: isolate; }
+.numeros-fondo { position: absolute; inset: 0; z-index: -3; }
+.numeros-fondo img { object-fit: cover; filter: saturate(0.7); }
+.numeros::before {
+  content: ""; position: absolute; inset: 0; z-index: -2;
+  background: linear-gradient(180deg, rgba(18, 34, 48, 0.82) 0%, rgba(14, 14, 13, 0.78) 60%, rgba(14, 14, 13, 0.94) 100%);
+}
+.numeros-contenido { position: relative; }
+.numeros .titulo-seccion { color: #fff; }
+.numeros-total { display: flex; align-items: center; gap: 16px; }
+.numeros-total .valor { font-family: var(--display); font-stretch: 75%; font-weight: 800; font-size: clamp(80px, 10vw, 140px); line-height: 0.85; color: var(--cobre); }
+.numeros-total .desc { font-family: var(--display); font-size: 14px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.8); line-height: 1.5; }
+.mapa-marco { margin-top: 56px; }
+.mapa-mundi { width: 100%; height: auto; display: block; overflow: visible; }
+.mapa-mundi .pais { fill: rgba(255, 255, 255, 0.13); stroke: rgba(14, 14, 13, 0.55); stroke-width: 0.5; transition: fill 0.3s; }
+.mapa-mundi .pais.activo { fill: var(--cobre); fill-opacity: 0.85; }
+.mapa-mundi .pais.activo:hover { fill: var(--cobre-claro); fill-opacity: 1; }
+.mapa-mundi .punto .nucleo { fill: #fff; }
+.mapa-mundi .punto .halo { fill: var(--cobre-claro); opacity: 0.35; transform-box: fill-box; transform-origin: center; animation: latido 2.8s ease-out infinite; }
+.mapa-mundi .punto:nth-child(3n) .halo { animation-delay: 0.9s; }
+.mapa-mundi .punto:nth-child(3n+1) .halo { animation-delay: 1.8s; }
+@keyframes latido { 0% { transform: scale(0.4); opacity: 0.6; } 100% { transform: scale(1.8); opacity: 0; } }
+
+.paises-regiones { display: grid; gap: 40px 48px; margin-top: 64px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.region h3 { display: flex; justify-content: space-between; align-items: baseline; margin: 0 0 16px; padding-bottom: 12px; border-bottom: 1px solid var(--cobre); font-family: var(--display); font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cobre-claro); }
+.region h3 span { font-variant-numeric: tabular-nums; color: rgba(255,255,255,0.55); }
+.region ul { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 20px; }
+.region li { font-family: var(--display); font-stretch: 85%; font-weight: 700; text-transform: uppercase; font-size: 17px; letter-spacing: 0.02em; color: #fff; padding: 4px 0; break-inside: avoid; }
+.region:last-child ul { columns: 1; }
+.numeros-datos { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--linea); border: 1px solid var(--linea); margin-top: 80px; }
+.numeros-datos .dato { background: rgba(14,14,13,0.6); backdrop-filter: blur(6px); padding: 28px 24px; }
+.numeros-datos .valor { font-family: var(--display); font-stretch: 75%; font-weight: 800; font-size: 56px; line-height: 1; color: #fff; }
+.numeros-datos .valor span { color: var(--cobre); }
+.numeros-datos .desc { margin-top: 8px; font-size: 14px; color: rgba(255,255,255,0.7); }
 
 /* Proyectos (grid) */
 .proyectos-grid { display: grid; gap: 4px; margin-top: 64px; grid-template-columns: 1fr; }
@@ -335,3 +371,9 @@ button { font: inherit; cursor: pointer; }
   .revelar { opacity: 1; transform: none; }
   html { scroll-behavior: auto; }
 }
+
+@media (min-width: 1000px) {
+  .paises-regiones { grid-template-columns: 2fr 1fr 1.3fr 0.7fr; }
+  .region:first-child ul { columns: 3; }
+}
+.titulo-seccion { font-size: clamp(40px, 7vw, 96px); }

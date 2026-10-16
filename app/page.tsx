@@ -4,7 +4,8 @@ import Hero from "@/components/Hero";
 import Revelar from "@/components/Revelar";
 import ProyectoCard from "@/components/ProyectoCard";
 import FormularioContacto from "@/components/FormularioContacto";
-import { empresa, fabricacion, nosotros, proyectos } from "@/lib/data";
+import MapaMundi from "@/components/MapaMundi";
+import { empresa, fabricacion, fondoNumeros, nosotros, paises, proyectos, regiones } from "@/lib/data";
 
 const pilares = [
   { t: "Fabricación propia", d: "Taller de madera, metal y Solid Surface: controlamos calidad y plazos." },
@@ -76,27 +77,39 @@ export default function Inicio() {
       </section>
 
       {/* NÚMEROS */}
-      <section className="seccion" id="numeros">
-        <div className="contenedor">
-          <Revelar>
-            <span className="etiqueta">Números JSO</span>
-            <h2 className="display titulo-seccion">Presencia<br />internacional</h2>
+      <section className="seccion numeros" id="numeros">
+        <div className="numeros-fondo" aria-hidden>
+          <Image src={fondoNumeros} alt="" fill sizes="100vw" quality={70} />
+        </div>
+        <div className="contenedor numeros-contenido">
+          <Revelar className="cabecera-seccion">
+            <div>
+              <span className="etiqueta">Números JSO</span>
+              <h2 className="display titulo-seccion">Presencia<br />internacional</h2>
+            </div>
+            <div className="numeros-total">
+              <span className="valor">{paises.length}</span>
+              <span className="desc">países en los que<br />hemos trabajado</span>
+            </div>
           </Revelar>
-          <div className="numeros-grid">
-            <Revelar className="mapa">
-              <div className="mapa-img">
-                <Image src={empresa.mapaPaises} alt="Países en los que ha trabajado Grupo JSO" fill sizes="(min-width: 1000px) 55vw, 100vw" />
-              </div>
-            </Revelar>
-            <Revelar retraso={120} className="datos-grid">
-              <div className="dato"><div className="valor">3<span>+</span></div><div className="desc">Especialidades de fabricación</div></div>
-              <div className="dato"><div className="valor">{proyectos.length}</div><div className="desc">Líneas de proyecto</div></div>
-              <div className="dato"><div className="valor">360<span>°</span></div><div className="desc">Fabricación, suministro e instalación</div></div>
-              <div className="dato"><div className="valor">∞</div><div className="desc">Proyectos a medida</div></div>
-            </Revelar>
-          </div>
-          <Revelar className="banner-numeros">
-            <Image src={empresa.bannerNumeros} alt="Grupo JSO en cifras" fill sizes="(min-width: 1280px) 1200px, 100vw" />
+          <Revelar retraso={120} className="mapa-marco">
+            <MapaMundi />
+          </Revelar>
+          <Revelar retraso={160} className="paises-regiones">
+            {regiones.map((r) => {
+              const lista = paises.filter((p) => p.region === r);
+              return (
+                <div key={r} className="region">
+                  <h3>{r} <span>{lista.length}</span></h3>
+                  <ul>{lista.map((p) => <li key={p.nombre}>{p.nombre}</li>)}</ul>
+                </div>
+              );
+            })}
+          </Revelar>
+          <Revelar retraso={200} className="numeros-datos">
+            <div className="dato"><div className="valor">3</div><div className="desc">Especialidades de fabricación</div></div>
+            <div className="dato"><div className="valor">{proyectos.length}</div><div className="desc">Líneas de proyecto</div></div>
+            <div className="dato"><div className="valor">360<span>°</span></div><div className="desc">Fabricación, suministro e instalación</div></div>
           </Revelar>
         </div>
       </section>

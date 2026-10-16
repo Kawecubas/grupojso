@@ -301,6 +301,61 @@ export const proyectos: Proyecto[] = [
 
 export const portada = (p: Proyecto) => p.imagenes[p.portada] ?? p.imagenes[0];
 
+// Países donde Grupo JSO ha trabajado (lista del sitio original).
+// "en" = nombre del país en el mapa (world-atlas). "coord" solo para países que el mapa no dibuja.
+export type Pais = { nombre: string; en: string; region: Region; coord?: [number, number] };
+export type Region = "Europa" | "América" | "Oriente Medio y Asia" | "África";
+
+export const paises: Pais[] = [
+  { nombre: "España", en: "Spain", region: "Europa" },
+  { nombre: "Portugal", en: "Portugal", region: "Europa" },
+  { nombre: "Francia", en: "France", region: "Europa" },
+  { nombre: "Reino Unido", en: "United Kingdom", region: "Europa" },
+  { nombre: "Islandia", en: "Iceland", region: "Europa" },
+  { nombre: "Bélgica", en: "Belgium", region: "Europa" },
+  { nombre: "Países Bajos", en: "Netherlands", region: "Europa" },
+  { nombre: "Alemania", en: "Germany", region: "Europa" },
+  { nombre: "Austria", en: "Austria", region: "Europa" },
+  { nombre: "Italia", en: "Italy", region: "Europa" },
+  { nombre: "Suecia", en: "Sweden", region: "Europa" },
+  { nombre: "Finlandia", en: "Finland", region: "Europa" },
+  { nombre: "Estonia", en: "Estonia", region: "Europa" },
+  { nombre: "Lituania", en: "Lithuania", region: "Europa" },
+  { nombre: "Polonia", en: "Poland", region: "Europa" },
+  { nombre: "República Checa", en: "Czechia", region: "Europa" },
+  { nombre: "Eslovaquia", en: "Slovakia", region: "Europa" },
+  { nombre: "Croacia", en: "Croatia", region: "Europa" },
+  { nombre: "Serbia", en: "Serbia", region: "Europa" },
+  { nombre: "Rumanía", en: "Romania", region: "Europa" },
+  { nombre: "Ucrania", en: "Ukraine", region: "Europa" },
+  { nombre: "Grecia", en: "Greece", region: "Europa" },
+  { nombre: "México", en: "Mexico", region: "América" },
+  { nombre: "Colombia", en: "Colombia", region: "América" },
+  { nombre: "Brasil", en: "Brazil", region: "América" },
+  { nombre: "Paraguay", en: "Paraguay", region: "América" },
+  { nombre: "Uruguay", en: "Uruguay", region: "América" },
+  { nombre: "Argentina", en: "Argentina", region: "América" },
+  { nombre: "Chile", en: "Chile", region: "América" },
+  { nombre: "Turquía", en: "Turkey", region: "Oriente Medio y Asia" },
+  { nombre: "Georgia", en: "Georgia", region: "Oriente Medio y Asia" },
+  { nombre: "Líbano", en: "Lebanon", region: "Oriente Medio y Asia" },
+  { nombre: "Israel", en: "Israel", region: "Oriente Medio y Asia" },
+  { nombre: "Jordania", en: "Jordan", region: "Oriente Medio y Asia" },
+  { nombre: "Arabia Saudí", en: "Saudi Arabia", region: "Oriente Medio y Asia" },
+  { nombre: "Kuwait", en: "Kuwait", region: "Oriente Medio y Asia" },
+  { nombre: "Baréin", en: "Bahrain", region: "Oriente Medio y Asia", coord: [50.55, 26.07] },
+  { nombre: "Catar", en: "Qatar", region: "Oriente Medio y Asia" },
+  { nombre: "Dubái (EAU)", en: "United Arab Emirates", region: "Oriente Medio y Asia" },
+  { nombre: "India", en: "India", region: "Oriente Medio y Asia" },
+  { nombre: "Vietnam", en: "Vietnam", region: "Oriente Medio y Asia" },
+  { nombre: "Marruecos", en: "Morocco", region: "África" },
+];
+
+export const regiones: Region[] = ["Europa", "América", "Oriente Medio y Asia", "África"];
+
+// Foto de fondo de la sección "Números JSO" (cámbiala por cualquier otra imagen)
+export const fondoNumeros = m("e5a734d4386342438896711258f8b9e8~mv2.jpg");
+
 export const heroSlides = [
   { img: proyectos[0].imagenes[0], etiqueta: "Muro cortina" },
   { img: proyectos[8].imagenes[0], etiqueta: "Cocinas" },
