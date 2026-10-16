@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BotonWhatsApp from "@/components/WhatsApp";
 import { empresa } from "@/lib/data";
 import "./globals.css";
 
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     siteName: "Grupo JSO",
     title: "Grupo JSO | Construcción, fabricación y montaje",
     description: "Metal, madera y Solid Surface. Montajes comerciales y retail.",
-    images: [{ url: "https://static.wixstatic.com/media/bf0d7d_1632ccd6a882430b930594bd783e211d~mv2_d_3264_2448_s_4_2.jpg" }],
+    images: [{ url: "/img/bf0d7d_1632ccd6a882430b930594bd783e211d~mv2_d_3264_2448_s_4_2.jpg" }],
   },
   twitter: { card: "summary_large_image" },
 };
@@ -63,6 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main>{children}</main>
         <Footer />
+        <BotonWhatsApp />
       </body>
     </html>
   );

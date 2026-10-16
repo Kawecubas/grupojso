@@ -5,7 +5,8 @@ import Revelar from "@/components/Revelar";
 import ProyectoCard from "@/components/ProyectoCard";
 import FormularioContacto from "@/components/FormularioContacto";
 import MapaMundi from "@/components/MapaMundi";
-import { empresa, fabricacion, fondoNumeros, nosotros, paises, proyectos, regiones } from "@/lib/data";
+import { IconoWhatsApp } from "@/components/WhatsApp";
+import { empresa, fabricacion, fondoNumeros, nosotros, paises, proyectos, regiones, whatsappLegible, whatsappUrl } from "@/lib/data";
 
 const pilares = [
   { t: "Fabricación propia", d: "Taller de madera, metal y Solid Surface: controlamos calidad y plazos." },
@@ -143,6 +144,16 @@ export default function Inicio() {
                 <h3>{empresa.direccion.region}</h3>
                 <p>{empresa.direccion.calle}<br />{empresa.direccion.poligono}<br />{empresa.direccion.cp}</p>
               </div>
+              {whatsappUrl() && (
+                <div className="contacto-bloque">
+                  <h3>WhatsApp</h3>
+                  <p>
+                    <a className="contacto-whatsapp" href={whatsappUrl()!} target="_blank" rel="noopener noreferrer">
+                      <IconoWhatsApp size={22} /> {whatsappLegible()}
+                    </a>
+                  </p>
+                </div>
+              )}
               <div className="contacto-bloque">
                 <h3>Email</h3>
                 <p><a href={`mailto:${empresa.email}`}>{empresa.email}</a></p>

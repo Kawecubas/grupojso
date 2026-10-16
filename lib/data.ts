@@ -2,7 +2,7 @@
 // Las imágenes se sirven desde el CDN de Wix (static.wixstatic.com) a través de next/image.
 // Ejecuta `npm run descargar-imagenes` para guardarlas en /public y dejar de depender de Wix.
 
-const WIX = "https://static.wixstatic.com/media/";
+const WIX = "/img/";
 const m = (id: string) => `${WIX}bf0d7d_${id}`;
 
 export const empresa = {
@@ -10,6 +10,11 @@ export const empresa = {
   lema: "Construcción, fabricación y montaje",
   subLema: "Metal, madera y Solid Surface · Montajes comerciales · Retail",
   email: "info@grupojso.com",
+  // WhatsApp: número con prefijo de país, solo dígitos (ej.: España 34 + número → "34600123456").
+  // Se puede definir también con la variable de entorno NEXT_PUBLIC_WHATSAPP.
+  // Si queda vacío, el botón de WhatsApp no aparece.
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? "",
+  whatsappMensaje: "Hola, Grupo JSO. Me gustaría recibir información sobre un proyecto.",
   direccion: {
     region: "Galicia",
     calle: "C/ González Navarro, 134-135",
@@ -370,3 +375,15 @@ export const navegacion = [
   { href: "/proyectos", label: "Proyectos" },
   { href: "/#contacto", label: "Contacto" },
 ];
+
+export const whatsappUrl = () =>
+  empresa.whatsapp
+    ? `https://wa.me/${empresa.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(empresa.whatsappMensaje)}`
+    : null;
+
+// Formato legible del número: +34 600 123 456
+export const whatsappLegible = () => {
+  const d = empresa.whatsapp.replace(/\D/g, "");
+  if (!d) return "";
+  return `+${d.slice(0, 2)} ${d.slice(2).replace(/(\d{3})(?=\d)/g, "$1 ")}`;
+};
